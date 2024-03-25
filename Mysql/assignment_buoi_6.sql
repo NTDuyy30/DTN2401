@@ -1,4 +1,5 @@
 USE assignment_project;
+DROP DATABASE assignment_project;
 CREATE DATABASE assignment_project;
 USE assignment_project;
 -- Câu 1
@@ -77,8 +78,8 @@ iNSERT iNTO work_done(Employee_id, module_id, work_done_date, work_done_descript
 DELIMITER $$ 
 	CREATE PROCEDURE Remove_project()
 		BEGIN
-			deLETE FrOM Project
-            whERE Project_completed_on < '2023-12-25';
+			DELETE FrOM Project
+            WHERE Project_completed_on < DATE_ADD(curdate(), INTERVAL -3 MONTH);
         END $$
 DELIMITER ;
 
@@ -99,4 +100,4 @@ DELIMITER ;
 
 set @get_module = '';
 call get_module(@get_module);
-select @get_module;
+select @get_module as module_id;
