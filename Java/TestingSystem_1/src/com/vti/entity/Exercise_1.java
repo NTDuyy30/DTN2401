@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import com.vti.entity.Position.PositionName;
 import com.vti.entity.TypeQuestion.TypeName;
 
-public class Program {
+public class Exercise_1 {
 
 	public static void main(String[] args) {
 //		Department
@@ -226,133 +226,11 @@ public class Program {
 		eq2.exam = ex2;
 		eq2.question = q2;
 		eq3.exam = ex3;
-		eq3.question = q3;
-
-//		Print Department
-		System.out.println("====================================Department====================================");
-		System.out.println("ID: " + dpm1.departmentID + ", Name:" + dpm1.departmentName);
-		System.out.println("ID: " + dpm2.departmentID + ", Name:" + dpm2.departmentName);
-		System.out.println("ID: " + dpm3.departmentID + ", Name:" + dpm3.departmentName);
-
-//		Print Position
-		System.out.println("\n====================================Position====================================");
-		System.out.println("ID: " + p1.positionID + ", Name:" + p1.positionName);
-		System.out.println("ID: " + p2.positionID + ", Name:" + p2.positionName);
-		System.out.println("ID: " + p3.positionID + ", Name:" + p3.positionName);
-		System.out.println("ID: " + p4.positionID + ", Name:" + p4.positionName);
-
-//		Print Account
-		System.out.println("\n====================================Account====================================");
-		System.out.printf("%-5s %15s %15s %15s %15s %15s %15s", "ID", "Email", "Username", "fullname", "department",
-				"position", "CreateDate");
-		System.out.println();
-		System.out.format("%-5s %15s %15s %15s %15s %15s %15s", acc1.accountID, acc1.email, acc1.username, acc1.fullname,
-				acc1.department.departmentName, acc1.position.positionName, acc1.createDate);
-		System.out.println();
-		System.out.format("%-5s %15s %15s %15s %15s %15s %15s", acc2.accountID, acc2.email, acc2.username, acc2.fullname,
-				acc2.department.departmentName, acc2.position.positionName, acc2.createDate);
-		System.out.println();
-		System.out.format("%-5s %15s %15s %15s %15s %15s %15s", acc3.accountID, acc3.email, acc3.username, acc3.fullname,
-				acc3.department.departmentName, acc3.position.positionName, acc3.createDate);
-		System.out.println();
-
-//		Print Group
-		System.out.println("\n====================================Group====================================");
-		System.out.printf("%5s %15s %15s", "ID", "groupName", "createDate");
-		System.out.println();
-		System.out.format("%5s %15s %15s", gr1.groupID, gr1.groupName, gr1.createDate);
-		System.out.println();
-		System.out.format("%5s %15s %15s", gr2.groupID, gr2.groupName, gr2.createDate);
-		System.out.println();
-		System.out.format("%5s %15s %15s", gr3.groupID, gr3.groupName, gr3.createDate);
-		System.out.println();
-
-//		Print Group account
-		System.out.println("\n====================================Group Account====================================");
-		System.out.printf("%10s %15s %15s", "Group", "Account", "JoinDate");
-		System.out.println();
-		System.out.format("%10s %15s %15s", gc1.group.groupName, gc1.account.fullname, gc1.joinDate);
-		System.out.println();
-		System.out.format("%10s %15s %15s", gc2.group.groupName, gc2.account.fullname, gc2.joinDate);
-		System.out.println();
-		System.out.format("%10s %15s %15s", gc3.group.groupName, gc3.account.fullname, gc3.joinDate);
-		System.out.println();
-		System.out.format("%10s %15s %15s", gc4.group.groupName, gc4.account.fullname, gc4.joinDate);
-		System.out.println();
-
-//		Print Group Type question
-		System.out.println("\n====================================Type Question====================================");
-		System.out.println("TypeID: " + tq1.typeID + ", TypeName:" + tq1.typeName);
-		System.out.println("TypeID: " + tq2.typeID + ", TypeName:" + tq2.typeName);
-
-//		Print Group category question
-		System.out
-				.println("\n====================================Category Question====================================");
-		System.out.println("CategoryID: " + cq1.categoryID + ", CategoryName:" + cq1.categoryName);
-		System.out.println("CategoryID: " + cq2.categoryID + ", CategoryName:" + cq2.categoryName);
-
-//		Print Question
-		System.out.println("\n====================================Question====================================");
-		System.out.printf("%10s %30s %20s %20s %20s %15s", "questionID", "Content", "category", "type", "creator",
-				"createDate");
-		System.out.println();
-		System.out.format("%10s %30s %20s %20s %20s %15s", q1.questionID, q1.content, q1.category.categoryName,
-				q1.type.typeName, q1.creator.fullname, q1.createDate);
-		System.out.println();
-		System.out.format("%10s %30s %20s %20s %20s %15s", q2.questionID, q2.content, q2.category.categoryName,
-				q2.type.typeName, q2.creator.fullname, q2.createDate);
-		System.out.println();
-		System.out.format("%10s %30s %20s %20s %20s %15s", q3.questionID, q3.content, q3.category.categoryName,
-				q3.type.typeName, q3.creator.fullname, q3.createDate);
-		System.out.println();
-
-//		Print Answer
-		System.out.println("\n====================================Answer====================================");
-		System.out.printf("%10s %30s %30s %10s", "answerID", "content", "question", "isCorrect");
-		System.out.println();
-		System.out.format("%10s %30s %30s %10s", a1.answerID, a1.content, a1.question.content, a1.isCorrect);
-		System.out.println();
-		System.out.format("%10s %30s %30s %10s", a2.answerID, a2.content, a2.question.content, a2.isCorrect);
-		System.out.println();
-		System.out.format("%10s %30s %30s %10s", a3.answerID, a3.content, a3.question.content, a3.isCorrect);
-		System.out.println();
-
-//		Print Exam
-		System.out.println("\n====================================Exam====================================");
-		System.out.printf("%10s %10s %30s %10s %10s %10s %15s", "examID", "code", "title", "category", "duration",
-				"creatorID", "createDate");
-		System.out.println();
-
-		System.out.format("%10s %10s %30s %10s %10s %10s %15s", ex1.examID, ex1.code, ex1.title,
-				ex1.category[0].categoryName, ex1.duration, ex1.creator.fullname, ex1.createDate);
-		System.out.println();
-		System.out.format("%10s %10s %30s %10s %10s %10s %15s", ex1.examID, ex1.code, ex1.title,
-				ex1.category[1].categoryName, ex1.duration, ex1.creator.fullname, ex1.createDate);
-		System.out.println();
-
-		System.out.format("%10s %10s %30s %10s %10s %10s %15s", ex2.examID, ex2.code, ex2.title,
-				ex2.category[0].categoryName, ex2.duration, ex2.creator.fullname, ex2.createDate);
-		System.out.println();
-		System.out.format("%10s %10s %30s %10s %10s %10s %15s", ex2.examID, ex2.code, ex2.title,
-				ex2.category[1].categoryName, ex2.duration, ex2.creator.fullname, ex2.createDate);
-		System.out.println();
-
-		System.out.format("%10s %10s %30s %10s %10s %10s %15s", ex3.examID, ex3.code, ex3.title,
-				ex3.category[0].categoryName, ex3.duration, ex3.creator.fullname, ex3.createDate);
-		System.out.println();
-		System.out.format("%10s %10s %30s %10s %10s %10s %15s", ex3.examID, ex3.code, ex3.title,
-				ex3.category[1].categoryName, ex3.duration, ex3.creator.fullname, ex3.createDate);
-		System.out.println();
-
-//		print exam question
-		System.out.println("\n====================================Exam Question====================================");
-		System.out.println("Exam: " + eq1.exam.title + ", Question:" + eq1.question.content);
-		System.out.println("Exam: " + eq2.exam.title + ", Question:" + eq2.question.content);
-		System.out.println("Exam: " + eq3.exam.title + ", Question:" + eq3.question.content);
+		eq3.question = q3;		
 		
 		
-		
-//		Assignment 2
+//		=======================================Assignment 2=======================================
+//		Exercise 1
 //		Question 1
 		System.out.println("\n\n==========================================Assignment 2==========================================");
 		System.out.println("\nQuestion 1");
@@ -638,3 +516,4 @@ public class Program {
 		System.out.println();
 	}
 }
+

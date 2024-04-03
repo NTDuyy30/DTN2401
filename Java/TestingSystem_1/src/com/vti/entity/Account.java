@@ -10,4 +10,12 @@ public class Account {
 	public Department department;
 	public Position position;
 	public LocalDate createDate;
+	public Group[] groups;
+
+	@Override
+	public String toString() {
+		return "Account [accountID=" + accountID + ", email=" + email + ", username=" + username + ", fullname="
+				+ fullname + ", department=" + department.departmentName + ", position=" + position.positionName
+				+ ", createDate=" + createDate + "]";
+	}
 }
