@@ -8,29 +8,22 @@ import backend.EmployeesHandler;
 import entity.Employees;
 
 public class Program {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+	public static List<Employees> empList = new ArrayList<>();
 
-		EmployeesHandler empHand = new EmployeesHandler();
-		List<Employees> empList = new ArrayList<>();
+	public static void main(String[] args) {
 		empList.add(new Employees(3, "Duy"));
 		empList.add(new Employees(1, "Đạt"));
 		empList.add(new Employees(2, "Khải"));
 		empList.add(new Employees(5, "Tú"));
 		empList.add(new Employees(4, "Hà"));
 
+		Scanner sc = new Scanner(System.in);
+
+		EmployeesHandler empHand = new EmployeesHandler();
+
 		byte choice = -1;
 		do {
-			System.out.println("\n==============================Quản lý nhân viên=============================");
-			String leftAlignFormat = "| %-72s |%n";
-			System.out.format("+--------------------------------------------------------------------------+%n");
-			System.out.format("|                               Mời bạn chọn                               |%n");
-			System.out.format("+--------------------------------------------------------------------------+%n");
-			System.out.format(leftAlignFormat, "1. Danh sách nhân viên");
-			System.out.format(leftAlignFormat, "2. Thêm mới nhân viên");
-			System.out.format(leftAlignFormat, "3. Xóa nhân viên");
-			System.out.format(leftAlignFormat, "4. Thoát");
-			System.out.format("+--------------------------------------------------------------------------+%n");
+			menu();
 			choice = sc.nextByte();
 
 			switch (choice) {
@@ -51,6 +44,7 @@ public class Program {
 				break;
 			case 4:
 				System.out.println("Tạm biệt và hẹn gặp lại");
+//				Scannerutils.pro
 				break;
 			default:
 				System.out.println("Mời bạn chọn lại trong khoảng 1 đến 4");
@@ -65,5 +59,18 @@ public class Program {
 		} while (choice != 4 /* && choice != 2 */);
 
 		sc.close();
+	}
+
+	public static void menu() {
+		System.out.println("\n==============================Quản lý nhân viên=============================");
+		String leftAlignFormat = "| %-72s |%n";
+		System.out.format("+--------------------------------------------------------------------------+%n");
+		System.out.format("|                               Mời bạn chọn                               |%n");
+		System.out.format("+--------------------------------------------------------------------------+%n");
+		System.out.format(leftAlignFormat, "1. Danh sách nhân viên");
+		System.out.format(leftAlignFormat, "2. Thêm mới nhân viên");
+		System.out.format(leftAlignFormat, "3. Xóa nhân viên");
+		System.out.format(leftAlignFormat, "4. Thoát");
+		System.out.format("+--------------------------------------------------------------------------+%n");
 	}
 }
