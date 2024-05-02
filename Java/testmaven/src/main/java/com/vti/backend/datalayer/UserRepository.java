@@ -17,7 +17,7 @@ public class UserRepository implements IUserRepository {
 		pstm.setString(2, password);
 		int rs = pstm.executeUpdate();
 		JDBCUtils.closeConnection(con, null, pstm, null);
-		return rs >= 0;
+		return rs > 0;
 	}
 
 	@Override
