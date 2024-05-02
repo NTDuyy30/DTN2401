@@ -24,4 +24,20 @@ public class GroupController {
 	public boolean createGroup(Group group) throws ClassNotFoundException, SQLException {
 		return groupService.createGroup(group);
 	}
+
+	public boolean isGroupExists(String name) throws ClassNotFoundException, SQLException {
+		return groupService.isGroupExists(name);
+	}
+
+	public boolean updateGroupById(Group group, int id) throws ClassNotFoundException, SQLException {
+		return groupService.updateGroupById(group, id);
+	}
+
+	public boolean isGroupIdExists(int id) throws ClassNotFoundException, SQLException {
+		return groupService.isGroupIdExists(id);
+	}
+
+	public boolean deleteGroupById(int id) throws ClassNotFoundException, SQLException {
+		return groupService.deleteGroupById(id);
+	}
 }

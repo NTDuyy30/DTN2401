@@ -26,13 +26,54 @@ public class GroupFunction {
 	public static void createGroup() {
 		try {
 			GroupController groupCon = new GroupController();
-			int id = ScannerUtils.inputId("Input group id: ");
 			String name = ScannerUtils.inputName("Input group name: ");
-			Group group = new Group(id, name);
-			if (groupCon.createGroup(group)) {
-				System.out.println("Create new a group successful!");
+			if (!groupCon.isGroupExists(name)) {
+				Group group = new Group(name);
+				if (groupCon.createGroup(group)) {
+					System.out.println("Create new a group successful!");
+				} else {
+					System.out.println("Create new a group fail!");
+				}
 			} else {
-				System.out.println("Create new a group fail!");
+				System.out.println("Group already exists!!!");
+			}
+		} catch (ClassNotFoundException | IOException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void updateGroup() {
+		try {
+			GroupController groupCon = new GroupController();
+			int id = ScannerUtils.inputId("Input id of group you want update: ");
+			if (groupCon.isGroupIdExists(id)) {
+				String name = ScannerUtils.inputName("Input new name you want update: ");
+				Group group = new Group(name);
+				if (groupCon.updateGroupById(group, id)) {
+					System.out.println("Update new a group successful!");
+				} else {
+					System.out.println("Update new a group fail!");
+				}
+			} else {
+				System.out.println("Group not exitst!!!");
+			}
+		} catch (ClassNotFoundException | IOException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void deleteGroup() {
+		try {
+			GroupController groupCon = new GroupController();
+			int id = ScannerUtils.inputId("Input id of group you want delete: ");
+			if (groupCon.isGroupIdExists(id)) {
+				if (groupCon.deleteGroupById(id)) {
+					System.out.println("Delete new a group successful!");
+				} else {
+					System.out.println("Delete new a group fail!");
+				}
+			} else {
+				System.out.println("Group not exitst!!!");
 			}
 		} catch (ClassNotFoundException | IOException | SQLException e) {
 			e.printStackTrace();

@@ -24,7 +24,7 @@ public class GroupRepository implements IGroupRepository {
 		// Create sql statement
 		String sql = "SELECT group_id, group_name FROM `Groups`";
 
-		// execute query
+		// Execute query
 		ResultSet resultSet = jdbcUtils.executeQuery(sql);
 
 		// Handling result set
@@ -42,14 +42,94 @@ public class GroupRepository implements IGroupRepository {
 	@Override
 	public boolean createGroup(Group group) throws ClassNotFoundException, SQLException {
 		// Create sql statement
-		String sql = "insert into `groups`(group_id, group_name) values(?, ?)";
+		String sql = "insert into `groups`(group_name) values(?)";
 
 		// Create prepare statement
 		PreparedStatement pstm = jdbcUtils.createPrepareStatement(sql);
-		pstm.setInt(1, group.getGroupId());
-		pstm.setString(2, group.getGroupName());
+		pstm.setString(1, group.getGroupName());
+
+		// Execute query
+		int rs = pstm.executeUpdate();
+
+		// disconnect
+		jdbcUtils.closeConnection();
+		return rs > 0;
+	}
+
+	@Override
+	public boolean isGroupExists(String name) throws ClassNotFoundException, SQLException {
+		// Create sql statement
+		String sql = "select * from `groups` where group_name = ?";
+
+		// Create prepare statement
+		PreparedStatement pstm = jdbcUtils.createPrepareStatement(sql);
+		pstm.setString(1, name);
+
+		// Execute query
+		ResultSet resultSet = pstm.executeQuery();
 
 		// Handling result set
+		if (resultSet.next()) {
+			// disconnect
+			jdbcUtils.closeConnection();
+			return true;
+		} else {
+			jdbcUtils.closeConnection();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean updateGroupById(Group group, int id) throws ClassNotFoundException, SQLException {
+		// Create sql statement
+		String sql = "update `groups` set group_name = ? where group_id = ?";
+
+		// Create prepare statement
+		PreparedStatement pstm = jdbcUtils.createPrepareStatement(sql);
+		pstm.setString(1, group.getGroupName());
+		pstm.setInt(2, id);
+
+		// Execute query
+		int rs = pstm.executeUpdate();
+
+		// disconnect
+		jdbcUtils.closeConnection();
+		return rs > 0;
+	}
+
+	@Override
+	public boolean isGroupIdExists(int id) throws ClassNotFoundException, SQLException {
+		// Create sql statement
+		String sql = "select * from `groups` where group_id = ?";
+
+		// Create prepare statement
+		PreparedStatement pstm = jdbcUtils.createPrepareStatement(sql);
+		pstm.setInt(1, id);
+
+		// Execute query
+		ResultSet resultSet = pstm.executeQuery();
+
+		// Handling result set
+		if (resultSet.next()) {
+			// disconnect
+			jdbcUtils.closeConnection();
+			return true;
+		} else {
+			jdbcUtils.closeConnection();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean deleteGroupById(int id) throws ClassNotFoundException, SQLException {
+		// Create sql statement
+		String sql = "delete from `groups` where group_id = ?";
+
+		// Create prepare statement
+		PreparedStatement pstm = jdbcUtils.createPrepareStatement(sql);
+		pstm.setInt(1, id);
+
+		// Execute query
 		int rs = pstm.executeUpdate();
 
 		// disconnect

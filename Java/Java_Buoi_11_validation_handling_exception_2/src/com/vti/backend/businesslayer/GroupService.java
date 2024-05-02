@@ -27,4 +27,24 @@ public class GroupService implements IGroupService {
 		return groupRepository.createGroup(group);
 	}
 
+	@Override
+	public boolean isGroupExists(String name) throws ClassNotFoundException, SQLException {
+		return groupRepository.isGroupExists(name);
+	}
+
+	@Override
+	public boolean updateGroupById(Group group, int id) throws ClassNotFoundException, SQLException {
+		return groupRepository.updateGroupById(group, id);
+	}
+
+	@Override
+	public boolean isGroupIdExists(int id) throws ClassNotFoundException, SQLException {
+		return groupRepository.isGroupIdExists(id);
+	}
+
+	@Override
+	public boolean deleteGroupById(int id) throws ClassNotFoundException, SQLException {
+		return groupRepository.deleteGroupById(id);
+	}
+
 }

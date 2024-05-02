@@ -16,6 +16,12 @@ public class Program {
 				GroupFunction.createGroup();
 				break;
 			case 3:
+				GroupFunction.updateGroup();
+				break;
+			case 4:
+				GroupFunction.deleteGroup();
+				break;
+			case 5:
 				System.out.println("Bye bye");
 				return;
 			default:
@@ -32,7 +38,9 @@ public class Program {
 		System.out.format("+--------------------------------------------------------------------------+%n");
 		System.out.format(leftAlignFormat, "1. Show all Group");
 		System.out.format(leftAlignFormat, "2. Create");
-		System.out.format(leftAlignFormat, "3. Exit");
+		System.out.format(leftAlignFormat, "3. Update");
+		System.out.format(leftAlignFormat, "4. Delete");
+		System.out.format(leftAlignFormat, "5. Exit");
 		System.out.format("+--------------------------------------------------------------------------+%n");
 	}
 }
