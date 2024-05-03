@@ -25,7 +25,7 @@ public class Program {
 				System.out.println("Bye bye");
 				return;
 			default:
-				System.out.println("Please enter again in 1 - 3");
+				System.out.println("Please enter again in 1 - 5");
 			}
 		}
 	}

@@ -1,20 +1,13 @@
-import java.util.Scanner;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Test {
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		try {
-			System.out.println("Nhập vào số thứ 1: ");
-			int a = sc.nextInt();
-			System.out.println("Nhập vào số thứ 2: ");
-			int b = sc.nextInt();
-			System.out.println("Kết quả phép chia 2 số là: " + a / b);
-			int[] arr = { 1, 2 };
-			arr[4] = 10;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 
+		String pattern = "dd-MM-yyyy hh:mm:ss";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		String time = simpleDateFormat.format(new Date(102, 10, 14, 6, 0, 0));
+		System.out.println(time);
 	}
 
 }

@@ -26,16 +26,20 @@ public class GroupFunction {
 	public static void createGroup() {
 		try {
 			GroupController groupCon = new GroupController();
-			String name = ScannerUtils.inputName("Input group name: ");
-			if (!groupCon.isGroupExists(name)) {
-				Group group = new Group(name);
-				if (groupCon.createGroup(group)) {
-					System.out.println("Create new a group successful!");
+			String name = null;
+			while (true) {
+				name = ScannerUtils.inputName("Input group name: ");
+				if (groupCon.isGroupExists(name)) {
+					System.out.println("Please enter group name again because it already exists: ");
 				} else {
-					System.out.println("Create new a group fail!");
+					break;
 				}
+			}
+			Group group = new Group(name);
+			if (groupCon.createGroup(group)) {
+				System.out.println("Create new a group successful!");
 			} else {
-				System.out.println("Group already exists!!!");
+				System.out.println("Create new a group fail!");
 			}
 		} catch (ClassNotFoundException | IOException | SQLException e) {
 			e.printStackTrace();
@@ -45,17 +49,21 @@ public class GroupFunction {
 	public static void updateGroup() {
 		try {
 			GroupController groupCon = new GroupController();
-			int id = ScannerUtils.inputId("Input id of group you want update: ");
-			if (groupCon.isGroupIdExists(id)) {
-				String name = ScannerUtils.inputName("Input new name you want update: ");
-				Group group = new Group(name);
-				if (groupCon.updateGroupById(group, id)) {
-					System.out.println("Update new a group successful!");
+			int id = -1;
+			while (true) {
+				id = ScannerUtils.inputId("Input id of group you want update: ");
+				if (!groupCon.isGroupIdExists(id)) {
+					System.out.println("Please enter id again because it not exists: ");
 				} else {
-					System.out.println("Update new a group fail!");
+					break;
 				}
+			}
+			String name = ScannerUtils.inputName("Input new name you want update: ");
+			Group group = new Group(name);
+			if (groupCon.updateGroupById(group, id)) {
+				System.out.println("Update new a group successful!");
 			} else {
-				System.out.println("Group not exitst!!!");
+				System.out.println("Update new a group fail!");
 			}
 		} catch (ClassNotFoundException | IOException | SQLException e) {
 			e.printStackTrace();
@@ -65,15 +73,19 @@ public class GroupFunction {
 	public static void deleteGroup() {
 		try {
 			GroupController groupCon = new GroupController();
-			int id = ScannerUtils.inputId("Input id of group you want delete: ");
-			if (groupCon.isGroupIdExists(id)) {
-				if (groupCon.deleteGroupById(id)) {
-					System.out.println("Delete new a group successful!");
+			int id = -1;
+			while (true) {
+				id = ScannerUtils.inputId("Input id of group you want delete: ");
+				if (!groupCon.isGroupIdExists(id)) {
+					System.out.println("Please enter id again because it not exists: ");
 				} else {
-					System.out.println("Delete new a group fail!");
+					break;
 				}
+			}
+			if (groupCon.deleteGroupById(id)) {
+				System.out.println("Delete new a group successful!");
 			} else {
-				System.out.println("Group not exitst!!!");
+				System.out.println("Delete new a group fail!");
 			}
 		} catch (ClassNotFoundException | IOException | SQLException e) {
 			e.printStackTrace();
