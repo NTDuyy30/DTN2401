@@ -2,6 +2,7 @@ package com.vti.backend.datalayer;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -131,6 +132,24 @@ public class GroupRepository implements IGroupRepository {
 
 		// Execute query
 		int rs = pstm.executeUpdate();
+
+		// disconnect
+		jdbcUtils.closeConnection();
+		return rs > 0;
+	}
+
+	@Override
+	public boolean updateGroupByIdWithProcedure(Group group, int id) throws ClassNotFoundException, SQLException {
+		// Create sql statement
+		String sql = "{CALL sp_update_groups(?, ?)}";
+
+		// Create callable statement
+		CallableStatement cstm = jdbcUtils.createCallableStatement(sql);
+		cstm.setString(1, group.getGroupName());
+		cstm.setInt(2, id);
+
+		// Execute query
+		int rs = cstm.executeUpdate();
 
 		// disconnect
 		jdbcUtils.closeConnection();

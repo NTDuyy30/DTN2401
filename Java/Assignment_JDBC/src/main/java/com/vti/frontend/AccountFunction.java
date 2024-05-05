@@ -2,7 +2,6 @@ package com.vti.frontend;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import com.vti.backend.presentationlayer.AccountController;
@@ -14,8 +13,8 @@ public class AccountFunction {
 	public static void login() {
 		try {
 			AccountController con = new AccountController();
-			String username = ScannerUtils.inputName("Input username: ");
-			String passwrod = ScannerUtils.inputName("Input password: ");
+			String username = ScannerUtils.inputString("Input username: ");
+			String passwrod = ScannerUtils.inputPassword();
 			if (con.login(username, passwrod)) {
 				System.out.println("Login successful!");
 			} else {
@@ -77,10 +76,10 @@ public class AccountFunction {
 					"|  username  |  password  |       fullname       |        email        |  phone number  |      create time      |%n");
 			System.out.format(
 					"+------------+--------------------------------------------------------------------------------------------------+%n");
-			for (Account a : listAccount) {
 
+			for (Account a : listAccount) {
 				System.out.format(leftAlignFormat, a.getUsername(), a.getPassword(), a.getFullname(), a.getEmail(),
-						a.getPhoneNumber(), DateUtils.getDDMMYYYYHHMISS(a.getCreateTime()));
+						a.getPhoneNumber(), DateUtils.getddMMyyyyHHmmss(a.getCreateTime()));
 			}
 			System.out.format(
 					"+------------+--------------------------------------------------------------------------------------------------+%n");
@@ -93,9 +92,6 @@ public class AccountFunction {
 		try {
 			AccountController accountCon = new AccountController();
 			String username = null;
-
-			String pattern = "dd-MM-yyyy HH:mm:ss";
-			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 
 			while (true) {
 				username = ScannerUtils.inputName("Input username: ");
@@ -117,12 +113,10 @@ public class AccountFunction {
 			System.out.format(
 					"+------------+--------------------------------------------------------------------------------------------------+%n");
 
-			String time = simpleDateFormat.format(a.getCreateTime());
-
 			System.out.format(leftAlignFormat, a.getUsername(), a.getPassword(), a.getFullname(), a.getEmail(),
-					a.getPhoneNumber(), time);
+					a.getPhoneNumber(), DateUtils.getddMMyyyyHHmmss(a.getCreateTime()));
 			System.out.format(
-					"+------------+------------------------------------------------------------------------------------------+%n");
+					"+------------+--------------------------------------------------------------------------------------------------+%n");
 		} catch (IOException | ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}

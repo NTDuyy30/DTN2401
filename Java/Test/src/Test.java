@@ -1,13 +1,16 @@
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Test {
 	public static void main(String[] args) {
 
-		String pattern = "dd-MM-yyyy hh:mm:ss";
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-		String time = simpleDateFormat.format(new Date(102, 10, 14, 6, 0, 0));
-		System.out.println(time);
-	}
+		Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
+				Pattern.CASE_INSENSITIVE);
 
+		String emailStr = "ntd.forwo@rk@vti.edu.com";
+
+		Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
+		System.out.println(matcher.matches());
+
+	}
 }

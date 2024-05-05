@@ -1,13 +1,12 @@
-package com.vti.backend.businesslayer.impl;
+package com.vti.backend.businesslayer;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.vti.backend.businesslayer.IAccountService;
+import com.vti.backend.datalayer.AccountRepository;
 import com.vti.backend.datalayer.IAccountRepository;
-import com.vti.backend.datalayer.impl.AccountRepository;
 import com.vti.entiy.Account;
 
 public class AccountService implements IAccountService {

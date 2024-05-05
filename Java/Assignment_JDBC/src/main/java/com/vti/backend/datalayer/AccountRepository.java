@@ -1,4 +1,4 @@
-package com.vti.backend.datalayer.impl;
+package com.vti.backend.datalayer;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -9,7 +9,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.vti.backend.datalayer.IAccountRepository;
 import com.vti.entiy.Account;
 import com.vti.utils.JDBCUtils;
 

@@ -40,4 +40,8 @@ public class GroupController {
 	public boolean deleteGroupById(int id) throws ClassNotFoundException, SQLException {
 		return groupService.deleteGroupById(id);
 	}
+
+	public boolean updateGroupByIdWithProcedure(Group group, int id) throws ClassNotFoundException, SQLException {
+		return groupService.updateGroupByIdWithProcedure(group, id);
+	}
 }

@@ -19,9 +19,12 @@ public class Program {
 				GroupFunction.updateGroup();
 				break;
 			case 4:
-				GroupFunction.deleteGroup();
+				GroupFunction.updateGroupWithProcedure();
 				break;
 			case 5:
+				GroupFunction.deleteGroup();
+				break;
+			case 6:
 				System.out.println("Bye bye");
 				return;
 			default:
@@ -39,8 +42,9 @@ public class Program {
 		System.out.format(leftAlignFormat, "1. Show all Group");
 		System.out.format(leftAlignFormat, "2. Create");
 		System.out.format(leftAlignFormat, "3. Update");
-		System.out.format(leftAlignFormat, "4. Delete");
-		System.out.format(leftAlignFormat, "5. Exit");
+		System.out.format(leftAlignFormat, "4. Update with Procedure");
+		System.out.format(leftAlignFormat, "5. Delete");
+		System.out.format(leftAlignFormat, "6. Exit");
 		System.out.format("+--------------------------------------------------------------------------+%n");
 	}
 }

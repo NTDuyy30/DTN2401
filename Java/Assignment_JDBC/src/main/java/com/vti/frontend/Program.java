@@ -1,6 +1,6 @@
 package com.vti.frontend;
 
-import com.vti.backend.businesslayer.impl.AccountService;
+import com.vti.backend.businesslayer.AccountService;
 import com.vti.utils.ScannerUtils;
 
 public class Program {

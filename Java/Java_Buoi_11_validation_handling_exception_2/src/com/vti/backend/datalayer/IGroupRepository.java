@@ -17,4 +17,6 @@ public interface IGroupRepository {
 	boolean isGroupIdExists(int id) throws ClassNotFoundException, SQLException;
 
 	boolean deleteGroupById(int id) throws ClassNotFoundException, SQLException;
+
+	boolean updateGroupByIdWithProcedure(Group group, int id) throws ClassNotFoundException, SQLException;
 }

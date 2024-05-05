@@ -91,4 +91,28 @@ public class GroupFunction {
 			e.printStackTrace();
 		}
 	}
+
+	public static void updateGroupWithProcedure() {
+		try {
+			GroupController groupCon = new GroupController();
+			int id = -1;
+			while (true) {
+				id = ScannerUtils.inputId("Input id of group you want update: ");
+				if (!groupCon.isGroupIdExists(id)) {
+					System.out.println("Please enter id again because it not exists: ");
+				} else {
+					break;
+				}
+			}
+			String name = ScannerUtils.inputName("Input new name you want update: ");
+			Group group = new Group(name);
+			if (groupCon.updateGroupByIdWithProcedure(group, id)) {
+				System.out.println("Update new a group successful!");
+			} else {
+				System.out.println("Update new a group fail!");
+			}
+		} catch (ClassNotFoundException | IOException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

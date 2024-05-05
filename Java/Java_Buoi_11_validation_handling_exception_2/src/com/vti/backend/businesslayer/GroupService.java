@@ -47,4 +47,9 @@ public class GroupService implements IGroupService {
 		return groupRepository.deleteGroupById(id);
 	}
 
+	@Override
+	public boolean updateGroupByIdWithProcedure(Group group, int id) throws ClassNotFoundException, SQLException {
+		return groupRepository.updateGroupByIdWithProcedure(group, id);
+	}
+
 }

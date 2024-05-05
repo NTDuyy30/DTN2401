@@ -3,6 +3,8 @@ package com.vti.utils;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ScannerUtils {
 
@@ -21,8 +23,20 @@ public class ScannerUtils {
 	}
 
 	public static String inputName(String msg) {
-		System.out.println(msg);
-		return inputString("Please input a name, please input again.");
+//		Pattern VALID_NAME_REGEX = Pattern.compile("^[a-z\\\\s]+", Pattern.CASE_INSENSITIVE);
+		Pattern VALID_NAME_REGEX = Pattern.compile("^[a-zA-Z ]*$");
+
+		while (true) {
+			System.out.println(msg);
+			String name = inputString("You cannot leave it blank");
+			Matcher matcher = VALID_NAME_REGEX.matcher(name);
+
+			if (matcher.matches()) {
+				return name;
+			} else {
+				System.out.println("Name is not in correct format. Please enter again");
+			}
+		}
 	}
 
 	public static int inputInt() {
@@ -133,12 +147,16 @@ public class ScannerUtils {
 
 	public static String inputEmail() {
 		System.out.println("Input email: ");
+		Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
+				Pattern.CASE_INSENSITIVE);
+		Matcher matcher;
 		while (true) {
-			String email = inputString("You cannot leave it blank");
-			if (email == null || !email.contains("@")) {
-				System.out.print("Please enter email again include character '@': ");
+			String emailStr = inputString("You cannot leave it blank");
+			matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
+			if (!matcher.matches()) {
+				System.out.println("Email is not in correct format. Please enter again: ");
 			} else {
-				return email;
+				return emailStr;
 			}
 		}
 	}
@@ -159,10 +177,9 @@ public class ScannerUtils {
 		while (true) {
 			String password = inputString("You cannot leave it blank");
 			if (password.length() < 6 || password.length() > 12) {
-				System.out.print("Please enter your password again. It must be at least 6 characters long: ");
+				System.out.print("Password must be between 6 and 12 characters: ");
 				continue;
 			}
-
 			return password;
 
 //			boolean hasAtLeast1Character = false;
@@ -176,25 +193,19 @@ public class ScannerUtils {
 //			if (hasAtLeast1Character == true) {
 //				return password;
 //			} else {
-//				System.out.print("Please input password again.");
+//				System.out.print("Password must have at least 1 uppercase character Please input password again.");
 //			}
 		}
 	}
 
 	public static String inputPhoneNumber() {
-		System.out.println("Input telephone number: ");
 		while (true) {
 			String number = inputString("You cannot leave it blank");
-//			if (number.length() > 12 || number.length() < 9) {
-//				continue;
-//			}
-			if (number.length() != 10) {
-				System.out.println("Please enter your telephone number again. It must be 10 numbers: ");
+			if (number.length() > 12 || number.length() < 9) {
 				continue;
 			}
 
 			if (number.charAt(0) != '0') {
-				System.out.println("Please enter your telephone number again. It must start with '0': ");
 				continue;
 			}
 
