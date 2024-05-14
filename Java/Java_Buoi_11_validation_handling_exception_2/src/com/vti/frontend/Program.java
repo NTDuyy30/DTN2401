@@ -10,18 +10,23 @@ public class Program {
 			choice = ScannerUtils.inputInt();
 			switch (choice) {
 			case 1:
+//				Get list group
 				GroupFunction.getListGroups();
 				break;
 			case 2:
+//				Create a new group
 				GroupFunction.createGroup();
 				break;
 			case 3:
+//				Update group by id
 				GroupFunction.updateGroup();
 				break;
 			case 4:
+//				Update group by id with Procedure
 				GroupFunction.updateGroupWithProcedure();
 				break;
 			case 5:
+//				Delete group by id
 				GroupFunction.deleteGroup();
 				break;
 			case 6:

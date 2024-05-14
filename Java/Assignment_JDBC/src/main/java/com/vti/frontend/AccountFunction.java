@@ -10,6 +10,7 @@ import com.vti.utils.DateUtils;
 import com.vti.utils.ScannerUtils;
 
 public class AccountFunction {
+//	Login
 	public static void login() {
 		try {
 			AccountController con = new AccountController();
@@ -25,6 +26,7 @@ public class AccountFunction {
 		}
 	}
 
+//	Register
 	public static void register() {
 		try {
 			AccountController con = new AccountController();
@@ -53,6 +55,7 @@ public class AccountFunction {
 		}
 	}
 
+//	Logout
 	public static void logout() {
 		try {
 			AccountController con = new AccountController();
@@ -62,6 +65,7 @@ public class AccountFunction {
 		}
 	}
 
+//	Get list accounts
 	public static void getListAccounts() {
 		try {
 			AccountController accountCon = new AccountController();
@@ -88,6 +92,7 @@ public class AccountFunction {
 		}
 	}
 
+//	Get Account by ussername
 	public static void getAccountByUsername() {
 		try {
 			AccountController accountCon = new AccountController();

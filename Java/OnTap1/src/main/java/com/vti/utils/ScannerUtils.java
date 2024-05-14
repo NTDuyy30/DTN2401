@@ -198,9 +198,11 @@ public class ScannerUtils {
 	}
 
 	public static String inputPhoneNumber() {
+		System.out.println("Input phone number: ");
 		while (true) {
 			String number = inputString("You cannot leave it blank");
 			if (number.length() > 12 || number.length() < 9) {
+				System.out.println("Phone number must be 9 - 12 characters. Please enter again: ");
 				continue;
 			}
 

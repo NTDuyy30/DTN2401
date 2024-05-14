@@ -28,17 +28,8 @@ public class CandidateFunction {
 			String firstname = ScannerUtils.inputName("Input firstname: ");
 			String lastname = ScannerUtils.inputName("Input lastname: ");
 			String phone = ScannerUtils.inputPhoneNumber();
-			System.out.println("Input experience in year: ");
-
-			byte expInYear = -1;
-			while (true) {
-				expInYear = (byte) ScannerUtils.inputIntPositive();
-				if (expInYear < 1 || expInYear > 10) {
-					System.out.println("Please enter experience in year again in paragraphs 1 to 10: ");
-				} else {
-					break;
-				}
-			}
+			byte expInYear = (byte) ScannerUtils.inputFunction(1, 10, "Input experience in year: ");
+			System.out.println("Please enter experience in year again in paragraphs 1 to 10: ");
 
 			ProSkill proSkill = null;
 			byte choice = -1;
@@ -152,8 +143,8 @@ public class CandidateFunction {
 	public static void login() {
 		try {
 			CandidateController con = new CandidateController();
-			String email = ScannerUtils.inputName("Input email: ");
-			String passwrod = ScannerUtils.inputName("Input password: ");
+			String email = ScannerUtils.inputEmail();
+			String passwrod = ScannerUtils.inputPassword();
 			if (con.login(email, passwrod)) {
 				System.out.println("Login successful!");
 			} else {

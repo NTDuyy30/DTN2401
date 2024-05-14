@@ -13,12 +13,15 @@ import com.vti.entiy.Account;
 import com.vti.utils.JDBCUtils;
 
 public class AccountRepository implements IAccountRepository {
+//	properties
 	private JDBCUtils jdbcUtils;
 
+//	Constructor
 	public AccountRepository() throws FileNotFoundException, IOException {
 		jdbcUtils = new JDBCUtils();
 	}
 
+//	Login
 	@Override
 	public boolean login(String username, String password) throws SQLException, ClassNotFoundException {
 		// Create sql statement
@@ -43,6 +46,7 @@ public class AccountRepository implements IAccountRepository {
 		}
 	}
 
+//	Register
 	@Override
 	public boolean register(Account account) throws SQLException, ClassNotFoundException {
 		// Create sql statement
@@ -65,6 +69,7 @@ public class AccountRepository implements IAccountRepository {
 		return rs > 0;
 	}
 
+//	Check username exists
 	@Override
 	public boolean isUsernameExists(String username) throws ClassNotFoundException, SQLException {
 		// Create sql statement
@@ -88,6 +93,7 @@ public class AccountRepository implements IAccountRepository {
 		}
 	}
 
+//	Get list accounts
 	@Override
 	public List<Account> getListAccounts() throws ClassNotFoundException, SQLException {
 		List<Account> accounts = new ArrayList<>();
@@ -111,6 +117,7 @@ public class AccountRepository implements IAccountRepository {
 		return accounts;
 	}
 
+//	Get Account by ussername
 	@Override
 	public Account getAccountByUsername(String username) throws SQLException, ClassNotFoundException {
 		// Create sql statement

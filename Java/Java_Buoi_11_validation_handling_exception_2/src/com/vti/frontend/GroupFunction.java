@@ -9,7 +9,7 @@ import com.vti.entiy.Group;
 import com.vti.utils.ScannerUtils;
 
 public class GroupFunction {
-
+//	Get list group
 	public static void getListGroups() {
 		try {
 			GroupController groupCon = new GroupController();
@@ -23,6 +23,7 @@ public class GroupFunction {
 		}
 	}
 
+//	Create a new group
 	public static void createGroup() {
 		try {
 			GroupController groupCon = new GroupController();
@@ -46,6 +47,7 @@ public class GroupFunction {
 		}
 	}
 
+//	Update group by id
 	public static void updateGroup() {
 		try {
 			GroupController groupCon = new GroupController();
@@ -70,6 +72,7 @@ public class GroupFunction {
 		}
 	}
 
+//	Delete group by id
 	public static void deleteGroup() {
 		try {
 			GroupController groupCon = new GroupController();
@@ -92,6 +95,7 @@ public class GroupFunction {
 		}
 	}
 
+//	Update group by id with Procedure
 	public static void updateGroupWithProcedure() {
 		try {
 			GroupController groupCon = new GroupController();

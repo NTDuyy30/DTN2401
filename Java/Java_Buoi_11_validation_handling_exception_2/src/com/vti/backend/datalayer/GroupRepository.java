@@ -13,12 +13,16 @@ import com.vti.entiy.Group;
 import com.vti.utils.JDBCUtils;
 
 public class GroupRepository implements IGroupRepository {
+//	Properties
 	private JDBCUtils jdbcUtils;
 
+//	Constructor
 	public GroupRepository() throws FileNotFoundException, IOException {
 		jdbcUtils = new JDBCUtils();
 	}
 
+//	Get list group
+	@Override
 	public List<Group> getListGroups() throws ClassNotFoundException, SQLException {
 		List<Group> groups = new ArrayList<>();
 
@@ -40,6 +44,7 @@ public class GroupRepository implements IGroupRepository {
 		return groups;
 	}
 
+//	Create a new group
 	@Override
 	public boolean createGroup(Group group) throws ClassNotFoundException, SQLException {
 		// Create sql statement
@@ -57,6 +62,7 @@ public class GroupRepository implements IGroupRepository {
 		return rs > 0;
 	}
 
+//	Check group Name exists
 	@Override
 	public boolean isGroupExists(String name) throws ClassNotFoundException, SQLException {
 		// Create sql statement
@@ -80,6 +86,7 @@ public class GroupRepository implements IGroupRepository {
 		}
 	}
 
+//	Update group by id
 	@Override
 	public boolean updateGroupById(Group group, int id) throws ClassNotFoundException, SQLException {
 		// Create sql statement
@@ -98,6 +105,7 @@ public class GroupRepository implements IGroupRepository {
 		return rs > 0;
 	}
 
+//	Check group id exists
 	@Override
 	public boolean isGroupIdExists(int id) throws ClassNotFoundException, SQLException {
 		// Create sql statement
@@ -121,6 +129,7 @@ public class GroupRepository implements IGroupRepository {
 		}
 	}
 
+//	Delete group by id
 	@Override
 	public boolean deleteGroupById(int id) throws ClassNotFoundException, SQLException {
 		// Create sql statement
@@ -138,6 +147,7 @@ public class GroupRepository implements IGroupRepository {
 		return rs > 0;
 	}
 
+//	Update group by id with Procedure
 	@Override
 	public boolean updateGroupByIdWithProcedure(Group group, int id) throws ClassNotFoundException, SQLException {
 		// Create sql statement
