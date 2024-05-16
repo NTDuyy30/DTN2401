@@ -18,15 +18,9 @@ public class DepartmentController {
     @Autowired
     private IDepartmentService departmentService;
 
-//    GET
-//    @GetMapping
-//    public List<Department> getAllDepartments() {
-//        return departmentService.getAllDepartments();
-//    }
-
     @GetMapping
-    public Page<Department> getDepartments(Pageable pageable) {
-        return departmentService.getDepartments(pageable);
+    public Page<Department> getAllDepartments(@PageableDefault(page = 0, size = 5) Pageable pageable) {
+        return departmentService.getAllDepartments(pageable);
     }
 
     @GetMapping("/{id}")
@@ -34,41 +28,26 @@ public class DepartmentController {
         return departmentService.getDepartmentById(id);
     }
 
-    @GetMapping("/exists/{id}")
-    public boolean isDepartmentExistsById(@PathVariable(name = "id") int id) {
-        return departmentService.isDepartmentExistsById(id);
-    }
-
     @GetMapping("/name/{name}")
-    public Department getDepartmentByName(@PathVariable(name = "name") String name) {
+    public List<Department> getDepartmentByName(@PathVariable String name){
         return departmentService.getDepartmentByName(name);
     }
 
-    @GetMapping("/search/{name}")
-    public List<Department> getDepartmentByNameContaining(@PathVariable(name = "name") String name) {
-        return departmentService.getDepartmentByNameContaining(name);
-    }
-
-//    POST
     @PostMapping
     public ResponseEntity<String> createDepartment(@RequestBody Department department) {
         departmentService.createDepartment(department);
         return new ResponseEntity<>("Created", HttpStatus.CREATED);
     }
 
-
-//    PUT
-    @PutMapping("/{id}")
-    public ResponseEntity<String> updateDepartment(@PathVariable(name = "id") int id, @RequestBody Department department) {
+    @PutMapping("{id}")
+    public ResponseEntity<String> updateDepartment(@PathVariable int id, @RequestBody Department department) {
         department.setId(id);
         departmentService.updateDepartment(department);
         return new ResponseEntity<>("Updated", HttpStatus.OK);
     }
 
-
-//    DELETE
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteDepartment(@PathVariable(name = "id") int id) {
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteDepartment(@PathVariable int id){
         departmentService.deleteDepartment(id);
         return new ResponseEntity<>("Deleted", HttpStatus.OK);
     }

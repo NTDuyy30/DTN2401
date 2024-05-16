@@ -7,26 +7,15 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface IDepartmentService {
-//    GET
-    List<Department> getAllDepartments();
-
-    Page<Department> getDepartments(Pageable pageable);
+    Page<Department> getAllDepartments(Pageable pageable);
 
     Department getDepartmentById(int id);
 
-    boolean isDepartmentExistsById(int id);
-
-    Department getDepartmentByName(String name);
-
-    List<Department> getDepartmentByNameContaining(String name);
-
-//    POST
     void createDepartment(Department department);
 
-//    PUT
     void updateDepartment(Department department);
 
-//    DELETE
     void deleteDepartment(int id);
 
+    List<Department> getDepartmentByName(String name);
 }

@@ -7,13 +7,13 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "department")
+@Table(name = "Department")
 @NoArgsConstructor
 @Getter
 @Setter
 public class Department {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id // PRIMARY KEY
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // AUTO_INCREMENT
     @Column(name = "DepartmentID")
     private int id;
 
@@ -21,5 +21,5 @@ public class Department {
     private String name;
 
     @Column(name = "TotalMember")
-    private byte totalMember;
+    private int totalMember;
 }

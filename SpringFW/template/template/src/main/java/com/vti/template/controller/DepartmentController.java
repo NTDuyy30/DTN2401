@@ -3,19 +3,30 @@ package com.vti.template.controller;
 import com.vti.template.entity.Department;
 import com.vti.template.service.IDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/department")
+@RequestMapping("/api/v1/departments")
 public class DepartmentController {
     @Autowired
     private IDepartmentService departmentService;
 
+//    GET
+//    @GetMapping
+//    public List<Department> getAllDepartments() {
+//        return departmentService.getAllDepartments();
+//    }
+
     @GetMapping
-    public List<Department> getAllDepartments() {
-        return departmentService.getAllDepartments();
+    public Page<Department> getDepartments(Pageable pageable) {
+        return departmentService.getDepartments(pageable);
     }
 
     @GetMapping("/{id}")
@@ -28,18 +39,38 @@ public class DepartmentController {
         return departmentService.isDepartmentExistsById(id);
     }
 
+    @GetMapping("/name/{name}")
+    public Department getDepartmentByName(@PathVariable(name = "name") String name) {
+        return departmentService.getDepartmentByName(name);
+    }
+
+    @GetMapping("/search/{name}")
+    public List<Department> getDepartmentByNameContaining(@PathVariable(name = "name") String name) {
+        return departmentService.getDepartmentByNameContaining(name);
+    }
+
+
+//    POST
     @PostMapping
-    public void createDepartment(@RequestBody Department department) {
+    public ResponseEntity<String> createDepartment(@RequestBody Department department) {
         departmentService.createDepartment(department);
+        return new ResponseEntity<>("created", HttpStatus.CREATED);
     }
 
-    @PutMapping
-    public void updateDepartment(@RequestBody Department department) {
+
+//    PUT
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateDepartment(@PathVariable(name = "id") int id, @RequestBody Department department) {
+        department.setId(id);
         departmentService.updateDepartment(department);
+        return new ResponseEntity<>("Updated", HttpStatus.OK);
     }
 
+
+//    DELETE
     @DeleteMapping("/{id}")
-    public void deleteDepartment(@PathVariable(name = "id") int id) {
+    public ResponseEntity<String> deleteDepartment(@PathVariable(name = "id") int id) {
         departmentService.deleteDepartment(id);
+        return new ResponseEntity<>("Deleted", HttpStatus.OK);
     }
 }

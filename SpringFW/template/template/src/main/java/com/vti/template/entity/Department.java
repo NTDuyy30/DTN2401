@@ -1,8 +1,6 @@
 package com.vti.template.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -19,4 +17,7 @@ public class Department {
 
     @Column(name = "departmentname", nullable = false, unique = true)
     private String name;
+
+    @Column(name = "TotalMember")
+    private byte totalMember;
 }
